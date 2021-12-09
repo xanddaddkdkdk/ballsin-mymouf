@@ -1,11 +1,6 @@
 scene.onOverlapTile(SpriteKind.Player, assets.tile`tile4`, function (sprite, location) {
     game.over(true, effects.confetti)
 })
-scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, location) {
-    tiles.placeOnTile(mySprite, tiles.getTileLocation(2, 12))
-    music.powerDown.play()
-    info.startCountdown(50)
-})
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (mySprite.isHittingTile(CollisionDirection.Bottom)) {
         mySprite.vy = -120
@@ -92,6 +87,11 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`tile3`, function (sprite, loc
     music.powerDown.play()
     info.startCountdown(50)
 })
+scene.onOverlapTile(SpriteKind.Player, img`myTile`, function (sprite, location) {
+    tiles.placeOnTile(mySprite, tiles.getTileLocation(2, 12))
+    music.powerDown.play()
+    info.startCountdown(50)
+})
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.stopAnimation(animation.AnimationTypes.All, mySprite)
     animation.runImageAnimation(
@@ -168,9 +168,6 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     200,
     true
     )
-})
-controller.combos.attachCombo("L+B", function () {
-	
 })
 let mySprite: Sprite = null
 tiles.setTilemap(tilemap`level1`)
